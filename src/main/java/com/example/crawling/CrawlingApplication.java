@@ -12,8 +12,7 @@ public class CrawlingApplication {
     public static void main(String[] args) {
         try {
             long beforeTime = System.currentTimeMillis();
-            String URL = "https://finance.naver.com/item/main.nhn?code=018470";
-            Document doc = Jsoup.connect(URL).get();
+
 
 //            Elements elements = doc.select(".cluster_text_headline");
             //헤드라인 제목 추출
@@ -28,6 +27,8 @@ public class CrawlingApplication {
 //                System.out.println(element.getElementsByAttribute("href").attr("href"));
 //            }
             while (true) {
+                String URL = "https://finance.naver.com/item/main.nhn?code=018470";
+                Document doc = Jsoup.connect(URL).get();
                 Elements elements = doc.select(".no_up span");
                 int money = 751 * Integer.parseInt(elements.get(0).text().replace(",", ""));
                 System.out.println("현재 시세 : " + elements.get(0).text().replace(",", "") + "원");
