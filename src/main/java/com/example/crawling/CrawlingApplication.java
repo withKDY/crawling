@@ -28,6 +28,7 @@ public class CrawlingApplication {
 //                System.out.println(element.getElementsByAttribute("href").attr("href"));
 //            }
             while (true) {
+                System.out.println("\n-------------------------------------\n");
                 String URL = "https://finance.naver.com/item/main.nhn?code=018470";
                 Document doc = Jsoup.connect(URL).get();
                 Elements elements = doc.select(".no_up span");
@@ -42,7 +43,8 @@ public class CrawlingApplication {
                 } else {
                     System.out.println(seedMoney - money + "원 적자");
                 }
-                Thread.sleep(60000);
+                System.out.println("\n-------------------------------------\n");
+                Thread.sleep(10000);
             }
 
         }catch (Exception e) {
