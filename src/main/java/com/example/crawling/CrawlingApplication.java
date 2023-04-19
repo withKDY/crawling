@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CrawlingApplication {
+    final static int seedMoney = 3000000;
 
     public static void main(String[] args) {
         try {
@@ -36,7 +37,12 @@ public class CrawlingApplication {
                 long afterTime = System.currentTimeMillis();
                 long secDiffTime = (afterTime - beforeTime) / 1000;
                 System.out.println("실행시간(m) : " + secDiffTime);
-                Thread.sleep(5000);
+                if (money > seedMoney) {
+                    System.out.println(money - seedMoney + "원 흑자");
+                } else {
+                    System.out.println(seedMoney - money + "원 적자");
+                }
+                Thread.sleep(60000);
             }
 
         }catch (Exception e) {
