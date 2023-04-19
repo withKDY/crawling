@@ -37,11 +37,16 @@ public class CrawlingApplication {
                 System.out.println("현재 보유중인 자산 : " + money + "원");
                 long afterTime = System.currentTimeMillis();
                 long secDiffTime = (afterTime - beforeTime) / 1000;
+                float percent = 0;
                 System.out.println("실행시간(m) : " + secDiffTime);
                 if (money > seedMoney) {
                     System.out.println(money - seedMoney + "원 흑자");
+                    percent = Float.parseFloat(String.valueOf(money - seedMoney)) / seedMoney;
+                    System.out.println("+" + percent * 100 + "%");
                 } else {
                     System.out.println(seedMoney - money + "원 적자");
+                    percent = Float.parseFloat(String.valueOf(seedMoney - money)) / seedMoney;
+                    System.out.println("-" + percent * 100 + "%");
                 }
                 System.out.println("\n-------------------------------------\n");
                 Thread.sleep(10000);
