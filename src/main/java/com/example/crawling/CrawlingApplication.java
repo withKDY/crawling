@@ -11,7 +11,8 @@ public class CrawlingApplication {
 
     public static void main(String[] args) {
         try {
-            String URL = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=조일+알미늄";
+            long beforeTime = System.currentTimeMillis();
+            String URL = "https://finance.naver.com/item/main.nhn?code=018470";
             Document doc = Jsoup.connect(URL).get();
 
 //            Elements elements = doc.select(".cluster_text_headline");
@@ -26,10 +27,16 @@ public class CrawlingApplication {
 //            for (Element element : elements) {
 //                System.out.println(element.getElementsByAttribute("href").attr("href"));
 //            }
-
-            Elements elements = doc.select(".spt_con strong");
-            int money = 751 * Integer.parseInt(elements.get(0).text().replace(",", ""));
-            System.out.println("현재 보유중인 자산 : " + money + "원");
+            while (true) {
+                Elements elements = doc.select(".no_up span");
+                int money = 751 * Integer.parseInt(elements.get(0).text().replace(",", ""));
+                System.out.println("현재 시세 : " + elements.get(0).text().replace(",", "") + "원");
+                System.out.println("현재 보유중인 자산 : " + money + "원");
+                long afterTime = System.currentTimeMillis();
+                long secDiffTime = (afterTime - beforeTime) / 1000;
+                System.out.println("실행시간(m) : " + secDiffTime);
+                Thread.sleep(5000);
+            }
 
         }catch (Exception e) {
             e.printStackTrace();
