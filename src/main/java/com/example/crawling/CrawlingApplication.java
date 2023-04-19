@@ -30,10 +30,12 @@ public class CrawlingApplication {
                     System.out.println(money - seedMoney + "원 흑자");
                     percent = Float.parseFloat(String.valueOf(money - seedMoney)) / seedMoney;
                     System.out.println("+" + percent * 100 + "%");
-                } else {
+                } else if (money < seedMoney){
                     System.out.println(seedMoney - money + "원 적자");
                     percent = Float.parseFloat(String.valueOf(seedMoney - money)) / seedMoney;
                     System.out.println("-" + percent * 100 + "%");
+                } else {
+                    System.out.println("변화 없음");
                 }
                 long minute = secDiffTime / 60;
                 long second = secDiffTime % 60;
