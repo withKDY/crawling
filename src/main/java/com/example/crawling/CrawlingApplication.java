@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CrawlingApplication {
-    final static int seedMoney = 3037560;
+    final static int seedMoney = 3000000;
 
     public static void main(String[] args) {
         try {
@@ -21,7 +21,7 @@ public class CrawlingApplication {
                 long afterTime = System.currentTimeMillis();
                 long secDiffTime = (afterTime - beforeTime) / 1000;
                 float percent;
-                int money = 204 * Integer.parseInt(elements.get(0).text().replace(",", ""));
+                int money = 243 * Integer.parseInt(elements.get(0).text().replace(",", ""));
 
                 System.out.println("현재 시세 : " + elements.get(0).text().replace(",", "") + "원");
                 System.out.println("현재 보유중인 자산 : " + money + "원");
